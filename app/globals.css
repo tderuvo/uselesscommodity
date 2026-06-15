@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* ───────────────────────── Palette ───────────────────────── */
+  --color-cream: #f4ecd8;
+  --color-cream-dark: #e9dcc1;
+  --color-paper: #fbf6ea;
+  --color-ink: #221c17;
+  --color-ink-soft: #4a3f37;
+  --color-ink-faint: #7a6c61;
+
+  --color-orange: #d9711f;
+  --color-orange-dark: #b8591a;
+  --color-rust: #b23b2c;
+  --color-rust-dark: #8f2e22;
+  --color-mustard: #e3a93f;
+
+  /* ───────────────────────── Typography ───────────────────────── */
+  --font-display: var(--font-bitter), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+  --font-stamp: var(--font-special-elite), 'Courier New', monospace;
+}
+
+/* ===================== BASE ===================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film-grain / paper texture overlay, sits above everything but blocks no clicks */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===================== TEXTURE UTILITIES ===================== */
+
+.halftone {
+  background-image: radial-gradient(var(--color-ink) 1px, transparent 1.6px);
+  background-size: 10px 10px;
+}
+
+.halftone-orange {
+  background-image: radial-gradient(var(--color-orange) 1.4px, transparent 1.8px);
+  background-size: 12px 12px;
+}
+
+.paper-texture {
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(34, 28, 23, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(34, 28, 23, 0.04) 0%, transparent 50%);
+}
+
+/* ===================== COMPONENTS ===================== */
+
+.btn-stamp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 3px solid var(--color-ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+.btn-stamp:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.btn-stamp:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+.rotate-stamp {
+  transform: rotate(-6deg);
+}
