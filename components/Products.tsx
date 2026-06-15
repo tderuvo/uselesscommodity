@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import TshirtMockup from './TshirtMockup'
-import { Sunburst, TrophyDownIcon, TvIcon } from './icons'
+import { Sunburst } from './icons'
 
 const PRODUCTS = [
   {
@@ -23,32 +23,21 @@ const PRODUCTS = [
   },
   {
     name: 'Useless Commodity',
+    blurb: 'The cult sitcom that made an entire generation question their life choices.',
+    price: '$34',
+    shirtFill: 'var(--color-cream-dark)',
+    image: { src: '/images/vinny01.png', alt: 'Useless Commodity sitcom poster t-shirt design' },
+    rotate: '-rotate-1',
+    href: '/products/useless-commodity',
+  },
+  {
+    name: 'Vintage Useless Commodity',
     blurb: 'The one that started it all.',
     price: '$32',
     shirtFill: 'var(--color-ink)',
     inkColor: 'var(--color-cream)',
     icon: <Sunburst rays={16} className="h-12 w-12" />,
     sublabel: 'EST. NEVER',
-    rotate: 'rotate-1',
-  },
-  {
-    name: 'Top Performer',
-    blurb: 'Exceeded expectations. Compensation unchanged.',
-    price: '$34',
-    shirtFill: 'var(--color-cream-dark)',
-    inkColor: 'var(--color-rust)',
-    icon: <TrophyDownIcon className="h-12 w-12" />,
-    sublabel: 'Q3 RESULTS',
-    rotate: '-rotate-1',
-  },
-  {
-    name: 'Legacy Model',
-    blurb: 'Discontinued. Still kicking.',
-    price: '$34',
-    shirtFill: 'var(--color-ink)',
-    inkColor: 'var(--color-cream)',
-    icon: <TvIcon className="h-12 w-12" />,
-    sublabel: 'DISCONTINUED 1994',
     rotate: 'rotate-1',
   },
 ]
@@ -70,7 +59,7 @@ export default function Products() {
         </div>
 
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {PRODUCTS.map((product) => {
+          {PRODUCTS.map((product, index) => {
             const card = (
               <>
                 <div className="mb-4">
@@ -90,7 +79,7 @@ export default function Products() {
             )
 
             return (
-              <div key={product.name} className="flex flex-col">
+              <div key={`${product.name}-${index}`} className="flex flex-col">
                 {product.href ? (
                   <Link href={product.href} className="flex flex-1 flex-col transition-opacity hover:opacity-80">
                     {card}
