@@ -23,14 +23,23 @@ export default function BlondiePage() {
           <sup className="ml-0.5 text-[10px] font-normal">™</sup>
         </Link>
 
-        <div className="relative mx-auto mt-10 w-full max-w-md rotate-1">
-          <div className="relative aspect-[1389/1132] w-full overflow-hidden border-[3px] border-ink shadow-[10px_12px_0_var(--color-ink)]">
+        <div className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-2">
+          <div className="relative aspect-square w-full overflow-hidden border-[3px] border-ink bg-cream-dark shadow-[10px_12px_0_var(--color-ink)]">
+            <Image
+              src="/images/mockups/blondie01-shirt.png"
+              alt="Blondie t-shirt mockup"
+              fill
+              className="object-contain"
+              sizes="(min-width: 768px) 320px, 90vw"
+            />
+          </div>
+          <div className="relative aspect-square w-full overflow-hidden border-[3px] border-ink bg-cream-dark shadow-[10px_12px_0_var(--color-ink)]">
             <Image
               src="/images/blondie01.png"
               alt="Blondie retro detective show t-shirt design"
               fill
-              className="object-cover"
-              sizes="(min-width: 768px) 640px, 90vw"
+              className="object-contain"
+              sizes="(min-width: 768px) 320px, 90vw"
             />
           </div>
         </div>
