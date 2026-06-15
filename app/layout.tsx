@@ -24,15 +24,15 @@ const specialElite = Special_Elite({
 })
 
 export const metadata: Metadata = {
-  title: 'Useless Commodity™ — Congratulations. You Have Been Classified.',
+  title: 'Useless Commodity™ — Wear the Joke.',
   description:
-    "A satirical retro lifestyle brand for everyone who suspects modern life has become slightly ridiculous. We're not here to fix society. We're here to put it on a t-shirt.",
+    "Useless Commodity is a small-batch t-shirt label built around one very specific inside joke. You'll either get it immediately, or never.",
   keywords: [
-    'satirical t-shirts',
-    'retro brand',
-    'corporate satire',
-    'anti-hustle culture',
-    'vintage graphic tees',
+    'indie t-shirt brand',
+    'retro graphic tees',
+    'inside joke shirts',
+    'screen printed t-shirts',
+    'custom t-shirts',
     'Useless Commodity',
   ],
   openGraph: {

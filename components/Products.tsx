@@ -1,14 +1,25 @@
+import Link from 'next/link'
 import TshirtMockup from './TshirtMockup'
 import { Sunburst, TrophyDownIcon, TvIcon } from './icons'
 
 const PRODUCTS = [
   {
     name: 'Tony & Red',
-    blurb: 'Crime doesn’t take days off. Neither do we.',
+    blurb: 'Seattle’s most unconventional detective team.',
     price: '$34',
     shirtFill: 'var(--color-cream-dark)',
     image: { src: '/images/tony_red01.png', alt: 'Tony & Red retro poster t-shirt design' },
     rotate: '-rotate-1',
+    href: '/products/tony-red',
+  },
+  {
+    name: 'Blondie',
+    blurb: 'A hard-nosed philosophical detective who knows one thing for sure: life is a hole.',
+    price: '$34',
+    shirtFill: 'var(--color-ink)',
+    image: { src: '/images/blondie01.png', alt: 'Blondie retro detective show t-shirt design' },
+    rotate: 'rotate-1',
+    href: '/products/blondie',
   },
   {
     name: 'Useless Commodity',
@@ -59,29 +70,43 @@ export default function Products() {
         </div>
 
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {PRODUCTS.map((product) => (
-            <div key={product.name} className="flex flex-col">
-              <div className="mb-4">
-                <TshirtMockup
-                  shirtFill={product.shirtFill}
-                  inkColor={product.inkColor ?? 'var(--color-ink)'}
-                  icon={product.icon}
-                  image={product.image}
-                  label={product.name.toUpperCase()}
-                  sublabel={product.sublabel}
-                  rotateClass={product.rotate}
-                />
+          {PRODUCTS.map((product) => {
+            const card = (
+              <>
+                <div className="mb-4">
+                  <TshirtMockup
+                    shirtFill={product.shirtFill}
+                    inkColor={product.inkColor ?? 'var(--color-ink)'}
+                    icon={product.icon}
+                    image={product.image}
+                    label={product.name.toUpperCase()}
+                    sublabel={product.sublabel}
+                    rotateClass={product.rotate}
+                  />
+                </div>
+                <h3 className="font-display text-lg font-bold text-ink">{product.name}</h3>
+                <p className="mt-1 flex-1 font-sans text-sm text-ink-soft">{product.blurb}</p>
+              </>
+            )
+
+            return (
+              <div key={product.name} className="flex flex-col">
+                {product.href ? (
+                  <Link href={product.href} className="flex flex-1 flex-col transition-opacity hover:opacity-80">
+                    {card}
+                  </Link>
+                ) : (
+                  card
+                )}
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <span className="font-display text-xl font-black text-ink">{product.price}</span>
+                  <button type="button" className="btn-stamp bg-orange px-4 py-2 text-xs text-cream">
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-              <h3 className="font-display text-lg font-bold text-ink">{product.name}</h3>
-              <p className="mt-1 flex-1 font-sans text-sm text-ink-soft">{product.blurb}</p>
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <span className="font-display text-xl font-black text-ink">{product.price}</span>
-                <button type="button" className="btn-stamp bg-orange px-4 py-2 text-xs text-cream">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
